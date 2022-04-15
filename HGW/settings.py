@@ -25,7 +25,11 @@ SECRET_KEY = '&8(=dgynw5s(r3m^^8zwj5a)m82_fcd)!kqq^pp8_0l+3@i=wv'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    'cdn-cors.ethers.io/**',
+    ]
 
 # Application definition
 
@@ -139,5 +143,12 @@ CORS_ORIGIN_WHITELIST = [
     'http://127.0.0.1:8000',
     'http://localhost',
     'http://localhost:8000',
+    'https://cdn-cors.ethers.io',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://127.0.0.1/**',
+    'http://localhost'
+    'http://127.0.0.1:8000/**',
     'https://cdn-cors.ethers.io',
 ]
