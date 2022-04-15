@@ -1,0 +1,65 @@
+{%extends "./base.html"%}
+
+{%block title%}HuachiBatallas{%endblock%}
+
+{%block body%}
+<h1>Gatopisto</h1>
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        {% if messages %}
+        {%for message in messages %}
+        <div class="alert alert-dismissible alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong class="text-dark">{{message}}</strong>
+        </div>
+        {%endfor%}
+        {% endif %}
+        <h2>Formulario</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/registerUser/" method="POST">{%csrf_token%}
+                    <div class="form-group">
+                        <input type="text" id="txtID" name="txtID" class="form-control" placeholder="ID" minlength="1" maxlength="10" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtWallet" name="txtWallet" class="form-control" placeholder="Wallet" minlength="1" maxlength="10" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtCoin" name="txtCoin" class="form-control" minlength="1" maxlength="10" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block text white">Save</button>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Wallet</th>
+                        <th>Creditos</th>
+                        <th colspan="2">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for u in Users%}
+                        <tr>
+                            <td>{{u.idUser}}</td>
+                            <td>{{u.idWallet}}</td>
+                            <td>{{u.coinInGame}}</td>
+                            <td><a href="editionUser/{{u.idUser}}" class="btn btn-info">Edit</a></td>
+                            <td><a href="deleteUser/{{u.idUser}}" class="btn btn-danger btn-delete ">Delete</a></td>
+                        </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+{%endblock%}

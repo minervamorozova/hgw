@@ -1,0 +1,32 @@
+{%extends "./base.html"%}
+
+{%block title%}HuachiBatallas{%endblock%}
+
+{%block body%}
+
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <h2>Formulario de Edicion</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/editUser/" method="POST">{%csrf_token%}
+                    <div class="form-group">
+                        <input type="text" id="txtID" name="txtID" class="form-control" value = "{{user.idUser}}" minlength="1" maxlength="10" readonly required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtWallet" name="txtWallet" class="form-control" value = "{{user.idWallet}}" minlength="1" maxlength="10" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtCoin" name="txtCoin" class="form-control" value = "{{user.coinInGame}}" minlength="1" maxlength="10" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block text white">Save</button>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+
+{%endblock%}
